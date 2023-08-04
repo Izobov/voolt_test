@@ -37,6 +37,18 @@
 </div>
 
 <style>
+	:global(.wrapper *::-webkit-scrollbar) {
+		width: 4px;
+	}
+
+	:global(.wrapper *::-webkit-scrollbar-track) {
+		background: transparent;
+	}
+
+	:global(.wrapper *::-webkit-scrollbar-thumb) {
+		background-color: #bdc1c7;
+		border-radius: 100px;
+	}
 	:global(body) {
 		margin: 0;
 		width: 100vw;

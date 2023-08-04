@@ -4,7 +4,6 @@
 	import search_icon from '$lib/icons/search.png';
 	import arrow_down from '$lib/icons/nav-arrow-down.png';
 	import search_err from '$lib/icons/search-fast-itemm-1.png';
-	import { beforeUpdate } from 'svelte';
 
 	export let placeholder = 'Search';
 	export let data = [];

@@ -3,8 +3,10 @@
 
 	/** @type {import('./$types').PageData} */
 	import img from '$lib/images/left-side.png';
+	import left_arrow from '$lib/icons/nav-arrow-left.png';
 	import logo from '$lib/images/voolt-logo.png';
 	import ComboBox from './ComboBox.svelte';
+	import FormButton from './FormButton.svelte';
 	import SelectList from './SelectList.svelte';
 	export let data;
 	const fake = [
@@ -25,6 +27,13 @@
 			<form class="form">
 				<ComboBox data={fake} />
 				<SelectList data={fake} value="3" />
+				<div class="buttons">
+					<FormButton type="secondary" width="fit-content" style="padding-left: 8px !important">
+						<img src={left_arrow} alt="left arrow" class="icon-left" />
+						Back
+					</FormButton>
+					<FormButton>Continue</FormButton>
+				</div>
 			</form>
 		</div>
 	</div>
@@ -111,11 +120,25 @@
 		font-weight: 600;
 		font-size: 32px;
 		max-width: 420px;
+		display: flex;
+		flex-grow: 1;
+		align-items: end;
 	}
 
 	.form {
 		display: flex;
 		flex-direction: column;
 		gap: 40px;
+		flex-grow: 1;
+	}
+	.buttons {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		flex-grow: 1;
+		align-items: end;
+	}
+	.icon-left {
+		margin-right: 8px;
 	}
 </style>

@@ -7,7 +7,7 @@
 
 	export let placeholder = 'Search';
 	export let data = [];
-	let value = '';
+	export let value = '';
 	let active = false;
 	let node;
 	let filtered;

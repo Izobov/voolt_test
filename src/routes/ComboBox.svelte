@@ -6,12 +6,7 @@
 	import search_err from '$lib/icons/search-fast-itemm-1.png';
 
 	export let placeholder = 'Search';
-	const data = [
-		{ id: '1', value: 'Accounting' },
-		{ id: '2', value: 'Appliance Installation' },
-		{ id: '3', value: '3' },
-		{ id: '4', value: '4' }
-	];
+	export let data = [];
 	let value = '';
 	let active = false;
 	let node;

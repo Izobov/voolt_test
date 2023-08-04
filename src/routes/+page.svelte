@@ -1,9 +1,18 @@
 <script>
+	// @ts-nocheck
+
 	/** @type {import('./$types').PageData} */
 	import img from '$lib/images/left-side.png';
 	import logo from '$lib/images/voolt-logo.png';
 	import ComboBox from './ComboBox.svelte';
+	import SelectList from './SelectList.svelte';
 	export let data;
+	const fake = [
+		{ id: '1', value: 'Accounting' },
+		{ id: '2', value: 'Appliance Installation' },
+		{ id: '3', value: '3' },
+		{ id: '4', value: '4' }
+	];
 </script>
 
 <div class="wrapper theme">
@@ -14,7 +23,8 @@
 		<div class="form-wrapper">
 			<h1 class="title">What type of business is the website for?</h1>
 			<form class="form">
-				<ComboBox />
+				<ComboBox data={fake} />
+				<SelectList data={fake} value="3" />
 			</form>
 		</div>
 	</div>
@@ -48,6 +58,8 @@
 			),
 			#f9fafa;
 		--blue-primary: #4253ff;
+		--blue-blue-200: #3c4ad7;
+		--blue-blue-10: #ebf1ff;
 		--base-grey-100: #202123;
 		--base-grey-90: #2e2f38;
 		--base-grey-40: #d8dbde;

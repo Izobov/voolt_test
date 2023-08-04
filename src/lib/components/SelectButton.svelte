@@ -25,6 +25,10 @@
 		background: var(--base-white);
 		cursor: pointer;
 	}
+
+	.button:hover {
+		background: var(--base-grey-20);
+	}
 	.active {
 		border: 1px solid var(--blue-primary);
 		background: var(--blue-blue-10, #ebf1ff);

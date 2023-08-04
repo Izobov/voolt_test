@@ -10,15 +10,28 @@
 	let value = '';
 	let active = false;
 	let node;
+	let filtered;
 
-	$: filtered = data.filter((i) =>
-		value ? i.value.toLowerCase().includes(value.toLowerCase()) : i
-	);
+	$: {
+		let inputVal = value.toLowerCase();
+		filtered = data.filter((i) => {
+			if (!value) return i;
+			const { name, synonyms = [], services = [] } = i;
+			if (name.toLowerCase().includes(inputVal)) return i;
+			if (synonyms.find((v) => v.toLowerCase().includes(inputVal))) return i;
+			if (services.find(({ name }) => name.toLowerCase().includes(inputVal))) return i;
+		});
+	}
 
 	function outsideHandle(e) {
 		if (node && !node.contains(e.target)) {
 			active = false;
 		}
+	}
+
+	function optionClick(option) {
+		value = option.name;
+		active = false;
 	}
 </script>
 
@@ -33,9 +46,9 @@
 	</div>
 	{#if active}
 		<div class="popup">
-			{#each filtered as { id, value: v } (id)}
-				<div class="option" on:click={() => (value = v)}>
-					{v}
+			{#each filtered as option (option.id)}
+				<div class="option" on:click={() => optionClick(option)}>
+					{option.name}
 				</div>
 			{:else}
 				<div class="empty">

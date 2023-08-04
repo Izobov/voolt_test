@@ -7,13 +7,14 @@
 
 	export let placeholder = 'Search';
 	export let data = [];
-	export let value = '';
+	export let selected;
+	let value = '';
 	let active = false;
 	let node;
 	let filtered;
 
 	$: {
-		let inputVal = value.toLowerCase();
+		let inputVal = value?.toLowerCase() || '';
 		filtered = data.filter((i) => {
 			if (!value) return i;
 			const { name, synonyms = [], services = [] } = i;
@@ -30,7 +31,8 @@
 	}
 
 	function optionClick(option) {
-		value = option.name;
+		selected = option;
+		value = selected.name;
 		active = false;
 	}
 </script>

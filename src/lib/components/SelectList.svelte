@@ -1,18 +1,20 @@
 <script>
 	import SelectButton from '$lib/components/SelectButton.svelte';
 
-	// @ts-ignore
 	/**
 	 * @type {any[]}
 	 */
 	export let data = [];
-	export let value = '';
+	/**
+	 * @type {any}
+	 */
+	export let value;
 
 	/**
-	 * @param {{ detail: { value: string; }; }} ev
+	 * @param {any} option
 	 */
-	function click(ev) {
-		value = ev.detail.value;
+	function click(option) {
+		value = option;
 	}
 </script>
 
@@ -21,8 +23,13 @@
 		<slot name="label">Or select from the most popular:</slot>
 	</span>
 	<div class="options-list">
-		{#each data as { name, id } (id)}
-			<SelectButton on:click={click} {id} value={name} active={name === value} />
+		{#each data as option (option.id)}
+			<SelectButton
+				on:click={() => click(option)}
+				id={option.id}
+				value={option.name}
+				active={option === value}
+			/>
 		{/each}
 	</div>
 </div>

@@ -11,7 +11,7 @@
 	export let data;
 	$: ({ industries = [] } = data || {});
 	$: popular = industries.filter(({ isPopular }) => !!isPopular);
-	let popularSelected = '';
+	let selected;
 </script>
 
 <div class="wrapper theme">
@@ -22,8 +22,8 @@
 		<div class="form-wrapper">
 			<h1 class="title">What type of business is the website for?</h1>
 			<form class="form">
-				<ComboBox data={industries} value={popularSelected} />
-				<SelectList data={popular} bind:value={popularSelected} />
+				<ComboBox data={industries} bind:selected />
+				<SelectList data={popular} bind:value={selected} />
 				<div class="buttons">
 					<FormButton type="secondary" width="fit-content" style="padding-left: 8px !important">
 						<img src={left_arrow} alt="left arrow" class="icon-left" />
@@ -46,6 +46,7 @@
 	:global(*) {
 		box-sizing: border-box;
 	}
+
 	:global(.theme) {
 		--gradient-mesh: radial-gradient(
 				108.2% 133.05% at 10.18% -60.65%,

@@ -49,5 +49,7 @@
 		display: flex;
 		gap: 20px;
 		flex-wrap: wrap;
+		max-height: 350px;
+		overflow: auto;
 	}
 </style>
